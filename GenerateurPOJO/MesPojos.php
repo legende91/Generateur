@@ -12,7 +12,7 @@
  */
 class MesPojos {
 
-    private $db; // connection a ma BG
+    private $db; // connection a ma DB
     private $tableauTable = array();
     private $TableauDeTableParColonnes = array();
     private $path;
@@ -35,6 +35,10 @@ catch(Exception $e)
         $this->generateurPojo();
          $this->generateurDAO();;
     }
+    
+/*----------------------------------------------------------------------*/  
+/*Setter and Getter*/
+    
    private function getPath() {
         return $this->path;
     }
@@ -66,7 +70,11 @@ catch(Exception $e)
    private function setTableauDeTableParColonnes($TableauDeTableParColonnes) {
         $this->TableauDeTableParColonnes = $TableauDeTableParColonnes;
     }
+    
+ /* ---------------------------------------------------------------------- */
+ /* Function */
 
+    
     private function SelectTable() {
 
         $reponse = $this->db->query('SHOW TABLES');
