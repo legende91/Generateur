@@ -357,7 +357,7 @@ import pack.beans;
 
            while (lrs.next()) {
              $key ".$key2." = new $key();
-                ");
+");
             for ($index = 0; $index < sizeof($value); $index++) {
                     $b= ucfirst($value[$index]['Field']);
                 $y = mb_strcut($value[$index]['Type'], 0, 3);
@@ -394,9 +394,9 @@ import pack.beans;
      
            while (lrs.next()) {
              $key ".$key2." = new $key();
-                ");
+");
             for ($index = 0; $index < sizeof($value); $index++) {
-                    $b= ucfirst($value[$index]['Field']);
+                $b= ucfirst($value[$index]['Field']);
                 $y = mb_strcut($value[$index]['Type'], 0, 3);
                 $index2= 1+$index;
                 if ($y == 'int') {
@@ -408,9 +408,9 @@ import pack.beans;
                 } else if ($y == 'dat') {
                     fwrite($monfichier, "                $key2.set$b(lrs.getDate($index2));\n");
                 }else if ($y == 'big') {
-                    fwrite($monfichier, "        $key2.set$b(lrs.getString($index2));\n");
+                    fwrite($monfichier, "                $key2.set$b(lrs.getString($index2));\n");
                 }else if ($y == 'timestamp') {
-                    fwrite($monfichier, "        $key2.set$b(lrs.getTimestamp($index2));\n");
+                    fwrite($monfichier, "                $key2.set$b(lrs.getTimestamp($index2));\n");
             }
             }
             fwrite($monfichier, "            }
@@ -432,36 +432,37 @@ import pack.beans;
                     if ($y == 'int') {
                         fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     } else if ($y == 'var') {
-                        fwrite($monfichier, " " . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
+                        fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     } else if ($y == 'tex') {
-                        fwrite($monfichier, " " . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
+                        fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     } else if ($y == 'dat') {
-                        fwrite($monfichier, " " . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
+                        fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     } else if ($y == 'big') {
-                        fwrite($monfichier, " " . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
+                        fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     } else if ($y == 'timestamp') {
-                        fwrite($monfichier, " " . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
+                        fwrite($monfichier, " (" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . "),");
                     }
                 } else {
                     if ($y == 'int') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     } else if ($y == 'var') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     } else if ($y == 'tex') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     } else if ($y == 'dat') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     } else if ($y == 'big') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     } else if ($y == 'timestamp') {
-                        fwrite($monfichier, "" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
+                        fwrite($monfichier, "(" . $value[$index]['Field'] . "=as" . $value[$index]['Field'] . ")");
                     }
                 }echo $value[$index]['Type'] . "<br/>";
             }
-            fwrite($monfichier, "WHERE (" . $value[0]['Field'] . "=asInteger)\");");
+            fwrite($monfichier, "WHERE (" . $value[0]['Field'] . "=asInteger)\");
+");
 
 
-            for ($index = 1; $index < sizeof($value); $index++) {
+            for ($index = 0; $index < sizeof($value); $index++) {
                 $b = ucfirst($value[$index]['Field']);
                 $y = mb_strcut($value[$index]['Type'], 0, 3);
                 $index2 = 1 + $index;
@@ -499,34 +500,35 @@ import pack.beans;
                 if ($y == 'int') {
                     fwrite($monfichier, " (". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
                 } else if ($y == 'var') {
-                    fwrite($monfichier, " ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
+                    fwrite($monfichier, " (". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
                 } else if ($y == 'tex') {
-                    fwrite($monfichier, " ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
+                    fwrite($monfichier, " (". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
                 } else if ($y == 'dat') {
-                    fwrite($monfichier, " ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
+                    fwrite($monfichier, " (". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
                 }else if ($y == 'big') {
-                    fwrite($monfichier, " ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
+                    fwrite($monfichier, " (". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
                 }else if ($y == 'timestamp') {
-                    fwrite($monfichier, " ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
+                    fwrite($monfichier, "( ". $value[$index]['Field']. "=as". $value[$index]['Field']."),");
             }
                 }else{
                 if ($y == 'int') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
                 } else if ($y == 'var') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
                 } else if ($y == 'tex') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
                 } else if ($y == 'dat') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
                 }else if ($y == 'big') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
                 }else if ($y == 'timestamp') {
-                    fwrite($monfichier, "". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
+                    fwrite($monfichier, "(". $value[$index]['Field']. "=as". $value[$index]['Field'].")");
             }   
             }echo $value[$index]['Type']."<br/>";
             
            }
-           fwrite($monfichier, "WHERE (".$value[0]['Field']."=asInteger)\");");
+           fwrite($monfichier, "WHERE (".$value[0]['Field']."=asInteger)\");
+");
            
           
          for ($index = 0; $index < sizeof($value); $index++) {
