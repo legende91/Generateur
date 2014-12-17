@@ -19,22 +19,22 @@ class MesPojos {
 
     function __construct($db,$path) {
         try
-{
+	{
 
-        $this->db =  new PDO('mysql:host=localhost;dbname='.$db,'root', '');
-        $this->path =$path;
+        	$this->db =  new PDO('mysql:host=localhost;dbname='.$db,'root', '');
+        	$this->path =$path;
                 }
-catch(Exception $e)
-{
-	// En cas d'erreur, on affiche un message et on arrête tout
-        die('Erreur : '.$e->getMessage());
+	catch(Exception $e)
+	{
+		// En cas d'erreur, on affiche un message et on arrête tout
+        	die('Erreur : '.$e->getMessage());
         
-}
-        $this->SelectTable();
-        $this->SelectColonnesParTable();
-        $this->generateurPojo();
-         $this->generateurDAO();;
-    }
+	}
+        	$this->SelectTable();
+        	$this->SelectColonnesParTable();
+        	$this->generateurPojo();
+         	$this->generateurDAO();;
+    	}
     
 /*----------------------------------------------------------------------*/  
 /*Setter and Getter*/
